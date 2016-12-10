@@ -1,22 +1,18 @@
 <ion-content>
-  <div>
-    <div style="float: left;">
-      <button (click)="addTodo()">
-        <ion-icon name="add"></ion-icon>
-        Add todo
-      </button>
-    </div>
-    <div style="float: right;">
-      Hide done
-      <ion-toggle [(ngModel)]="onlyShowNotDone"></ion-toggle>
-    </div>
-  </div>
+  <button (click)="addTodo()">
+    <ion-icon name="add"></ion-icon>
+    Add todo
+  </button>
   <ion-list>
-    <ion-item *ngFor="let todo of filteredTodos()">
-      <ion-toggle [checked]="todo.done" (ionChange)="toggleTodo(todo)"></ion-toggle>
+    <ion-item>
+      <ion-toggle [(ngModel)]="onlyShowNotDone"></ion-toggle>
       <ion-label>
-        {{todo.text}}
+        Hide done
       </ion-label>
+    </ion-item>
+    <ion-item *ngFor="let todo of filteredTodos()">
+      <ion-label>{{todo.text}}</ion-label>
+      <ion-toggle [checked]="todo.done" (ionChange)="toggleTodo(todo)"></ion-toggle>
     </ion-item>
   </ion-list>
 </ion-content>
